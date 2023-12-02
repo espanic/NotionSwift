@@ -23,6 +23,21 @@ extension NotionClient {
             completed: completed
         )
     }
+    
+    public func blockChildren(
+        blockId: Block.Identifier,
+        params: BaseQueryParams
+    ) async -> Result<ListResponse<ReadBlock>, NotionClientError>
+    {
+        await networkClient.get(
+            urlBuilder.url(
+                path: "/v1/blocks/{identifier}/children",
+                identifier: blockId,
+                params: params.asParams
+            ),
+            headers: headers()
+        )
+    }
 
     public func blockAppend(
         blockId: Block.Identifier,
@@ -37,6 +52,21 @@ extension NotionClient {
             body: BlockAppendRequest(children: children),
             headers: headers(),
             completed: completed
+        )
+    }
+    
+    public func blockAppend(
+        blockId: Block.Identifier,
+        children: [WriteBlock]
+    ) async -> Result<ListResponse<ReadBlock>, NotionClientError> 
+    {
+        await networkClient.patch(
+            urlBuilder.url(
+                path: "/v1/blocks/{identifier}/children",
+                identifier: blockId
+            ),
+            body: BlockAppendRequest(children: children),
+            headers: headers()
         )
     }
 
@@ -55,6 +85,21 @@ extension NotionClient {
             completed: completed
         )
     }
+    
+    public func blockUpdate(
+        blockId: Block.Identifier,
+        value: UpdateBlock
+    ) async -> Result<ReadBlock, NotionClientError>
+    {
+        await networkClient.patch(
+            urlBuilder.url(
+                path: "/v1/blocks/{identifier}",
+                identifier: blockId
+            ),
+            body: value,
+            headers: headers()
+        )
+    }
 
     public func blockDelete(
         blockId: Block.Identifier,
@@ -67,6 +112,18 @@ extension NotionClient {
             ),
             headers: headers(),
             completed: completed
+        )
+    }
+    
+    public func blockDelete(
+        blockId: Block.Identifier
+    ) async -> Result<ReadBlock, NotionClientError> {
+        await networkClient.delete(
+            urlBuilder.url(
+                path: "/v1/blocks/{identifier}",
+                identifier: blockId
+            ),
+            headers: headers()
         )
     }
 }

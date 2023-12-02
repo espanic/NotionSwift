@@ -18,4 +18,14 @@ extension NotionClient {
             completed: completed
         )
     }
+    
+    public func search(
+        request: SearchRequest
+    ) async -> Result<SearchResponse, NotionClientError> {
+        await networkClient.post(
+            urlBuilder.url(path: "/v1/search"),
+            body: request,
+            headers: headers()
+        )
+    }
 }

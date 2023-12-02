@@ -6,8 +6,8 @@ import PackageDescription
 let package = Package(
     name: "NotionSwift",
     platforms: [
-        .macOS(.v10_13),
-        .iOS(.v11),
+        .macOS("12.0"),
+        .iOS("15.0"),
     ],
     products: [
         .library(
