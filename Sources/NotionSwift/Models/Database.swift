@@ -3,9 +3,10 @@
 //
 
 import Foundation
+import Tagged
 
 public struct Database {
-    public typealias Identifier = EntityIdentifier<Database, UUIDv4>
+    public typealias Identifier = Tagged<Database, UUIDv4>
     public typealias PropertyName = String
     public let id: Identifier
     public let url: String

@@ -3,9 +3,10 @@
 //
 
 import Foundation
+import Tagged
 
 public struct PageProperty {
-    public typealias Identifier = EntityIdentifier<PageProperty, String>
+    public typealias Identifier = Tagged<PageProperty, String>
     public let id: Identifier
     public let type: PagePropertyType
 
@@ -49,12 +50,12 @@ public enum PagePropertyType {
 
 extension PagePropertyType {
     public struct SelectPropertyValue {
-        public let id: EntityIdentifier<SelectPropertyValue, String>?
+        public let id: Tagged<SelectPropertyValue, String>?
         public let name: String?
         public let color: String?
 
         public init(
-            id: EntityIdentifier<SelectPropertyValue, String>?,
+            id: Tagged<SelectPropertyValue, String>?,
             name: String?,
             color: String?
         ) {
@@ -65,12 +66,12 @@ extension PagePropertyType {
     }
 
     public struct MultiSelectPropertyValue {
-        public let id: EntityIdentifier<MultiSelectPropertyValue, UUIDv4>?
+        public let id: Tagged<MultiSelectPropertyValue, UUIDv4>?
         public let name: String?
         public let color: String?
 
         public init(
-            id: EntityIdentifier<MultiSelectPropertyValue, UUIDv4>?,
+            id: Tagged<MultiSelectPropertyValue, UUIDv4>?,
             name: String?,
             color: String?
         ) {
@@ -112,12 +113,12 @@ extension PagePropertyType {
     }
     
     public struct StatusPropertyValue {
-        public let id: EntityIdentifier<StatusPropertyValue, UUIDv4>?
+        public let id: Tagged<StatusPropertyValue, UUIDv4>?
         public let name: String?
         public let color: String?
 
         public init(
-            id: EntityIdentifier<StatusPropertyValue, UUIDv4>?,
+            id: Tagged<StatusPropertyValue, UUIDv4>?,
             name: String?,
             color: String?
         ) {

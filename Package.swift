@@ -14,11 +14,15 @@ let package = Package(
             name: "NotionSwift",
             targets: ["NotionSwift"]),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/pointfreeco/swift-tagged", from: "0.6.0")
+    ],
     targets: [
         .target(
             name: "NotionSwift",
-            dependencies: []
+            dependencies: [
+                .product(name: "Tagged", package: "swift-tagged")
+            ]
         ),
         .testTarget(
             name: "NotionSwiftTests",

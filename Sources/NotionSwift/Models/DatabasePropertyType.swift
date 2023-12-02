@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Tagged
 
 public enum DatabasePropertyType {
     case title
@@ -47,7 +48,7 @@ extension DatabasePropertyType {
 
 extension DatabasePropertyType {
     public struct SelectOption {
-        public typealias Identifier = EntityIdentifier<SelectOption, UUIDv4>
+        public typealias Identifier = Tagged<SelectOption, UUIDv4>
         public let name: String
         public let id: Identifier
         public let color: String
@@ -109,7 +110,7 @@ extension DatabasePropertyType {
 
 extension DatabasePropertyType {
     public struct StatusPropertConfirguration {
-        public typealias OptionIdentifier = EntityIdentifier<SelectOption, UUIDv4>
+        public typealias OptionIdentifier = Tagged<SelectOption, UUIDv4>
         
         public struct StatusOption {
             public let id: OptionIdentifier

@@ -3,7 +3,7 @@
 //
 
 import Foundation
-
+import Tagged
 /// Block object from a server response
 public struct ReadBlock: CustomStringConvertible {
     public let id: Block.Identifier

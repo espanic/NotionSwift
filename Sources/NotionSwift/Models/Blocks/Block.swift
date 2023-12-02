@@ -3,10 +3,10 @@
 //
 
 import Foundation
-
+import Tagged
 /// Just a placeholder entity. User ReadBlock / WriteBlock structs.
 public enum Block {
-    public typealias Identifier = EntityIdentifier<Block, UUIDv4>
+    public typealias Identifier = Tagged<Block, UUIDv4>
 }
 
 // MARK: - Codable

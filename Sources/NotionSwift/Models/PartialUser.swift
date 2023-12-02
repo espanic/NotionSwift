@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Tagged
 
 public struct PartialUser {
     public let id: User.Identifier
@@ -16,3 +17,4 @@ extension PartialUser: Codable {}
 
 @available(iOS 13.0, *)
 extension PartialUser: Identifiable {}
+
