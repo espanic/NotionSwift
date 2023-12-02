@@ -13,10 +13,10 @@ public class URLBuilder {
 
     public func url<T>(
         path: String,
-        identifier: EntityIdentifier<T, String>,
+        identifier: EntityIdentifier<T, UUID>,
         params: [String: String] = [:]
     ) -> URL {
-        let newPath = path.replacingOccurrences(of: "{identifier}", with: identifier.rawValue)
+        let newPath = path.replacingOccurrences(of: "{identifier}", with: identifier.rawValue.uuidString)
         guard let url = URL(string: newPath, relativeTo: base) else {
             fatalError("Invalid path, unable to create a URL: \(path)")
         }
