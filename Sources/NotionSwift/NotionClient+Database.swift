@@ -20,6 +20,19 @@ extension NotionClient {
             completed: completed
         )
     }
+    
+    public func database(
+        databaseId: Database.Identifier
+    ) async -> Result<Database, NotionClientError> 
+    {
+        await networkClient.get(
+            urlBuilder.url(
+                path: "/v1/databases/{identifier}",
+                identifier: databaseId
+            ),
+            headers: headers()
+        )
+    }
 
     public func databaseQuery(
         databaseId: Database.Identifier,
@@ -36,6 +49,20 @@ extension NotionClient {
             completed: completed
         )
     }
+    
+    public func databaseQuery(
+        databaseId: Database.Identifier,
+        params: DatabaseQueryParams
+    ) async -> Result<ListResponse<Page>, NotionClientError> {
+        await networkClient.post(
+            urlBuilder.url(
+                path: "/v1/databases/{identifier}/query",
+                identifier: databaseId
+            ),
+            body: params,
+            headers: headers()
+        )
+    }
 
     public func databaseCreate(
         request: DatabaseCreateRequest,
@@ -48,6 +75,18 @@ extension NotionClient {
             body: request,
             headers: headers(),
             completed: completed
+        )
+    }
+    
+    public func databaseCreate(
+        request: DatabaseCreateRequest
+    ) async -> Result<Database, NotionClientError> {
+        await networkClient.post(
+            urlBuilder.url(
+                path: "/v1/databases"
+            ),
+            body: request,
+            headers: headers()
         )
     }
 
@@ -64,6 +103,20 @@ extension NotionClient {
             body: request,
             headers: headers(),
             completed: completed
+        )
+    }
+    
+    public func databaseUpdate(
+        databaseId: Database.Identifier,
+        request: DatabaseUpdateRequest
+    ) async -> Result<Database, NotionClientError>{
+        await networkClient.patch(
+            urlBuilder.url(
+                path: "/v1/databases/{identifier}",
+                identifier: databaseId
+            ),
+            body: request,
+            headers: headers()
         )
     }
 }

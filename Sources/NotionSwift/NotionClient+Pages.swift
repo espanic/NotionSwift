@@ -18,6 +18,16 @@ import Foundation
             completed: completed
         )
     }
+     
+    public func page(
+         pageId: Page.Identifier
+     ) async -> Result<Page, NotionClientError>
+     {
+         await networkClient.get(
+             urlBuilder.url(path: "/v1/pages/{identifier}", identifier: pageId),
+             headers: headers()
+         )
+     }
 
     public func pageCreate(
         request: PageCreateRequest,
@@ -28,6 +38,18 @@ import Foundation
             body: request,
             headers: headers(),
             completed: completed
+        )
+    }
+     
+    public func pageCreate(
+        request: PageCreateRequest
+    ) async -> Result<Page, NotionClientError>
+    {
+         await networkClient.post(
+             urlBuilder.url(path: "/v1/pages"),
+             body: request,
+             headers: headers()
+             
         )
     }
 
@@ -43,4 +65,16 @@ import Foundation
             completed: completed
         )
     }
+     
+     public func pageUpdateProperties(
+         pageId: Page.Identifier,
+         request: PageProperiesUpdateRequest
+     ) async -> Result<Page, NotionClientError> 
+     {
+         await networkClient.patch(
+             urlBuilder.url(path: "/v1/pages/{identifier}", identifier: pageId),
+             body: request,
+             headers: headers()
+         )
+     }
 }
