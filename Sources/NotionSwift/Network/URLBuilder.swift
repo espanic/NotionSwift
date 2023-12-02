@@ -3,7 +3,7 @@
 //
 
 import Foundation
-
+import Tagged
 public class URLBuilder {
     let base: URL
 
@@ -13,7 +13,7 @@ public class URLBuilder {
 
     public func url<T>(
         path: String,
-        identifier: EntityIdentifier<T, UUID>,
+        identifier: Tagged<T, UUID>,
         params: [String: String] = [:]
     ) -> URL {
         let newPath = path.replacingOccurrences(of: "{identifier}", with: identifier.rawValue.uuidString)

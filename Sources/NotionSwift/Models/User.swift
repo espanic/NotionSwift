@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Tagged
 
 public struct User {
     public enum UserType {
@@ -23,7 +24,7 @@ public struct User {
         public init() {}
     }
 
-    public typealias Identifier = EntityIdentifier<User, UUIDv4>
+    public typealias Identifier = Tagged<User, UUIDv4>
     public let id: Identifier
     public let type: UserType?
     public let name: String?
