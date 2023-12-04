@@ -19,7 +19,7 @@ public enum Network {
     }
 }
 
-public protocol NetworkClient: AnyObject {
+public protocol NetworkClient: Sendable {
     func get<R: Decodable>(
         _ url: URL,
         headers: Network.HTTPHeaders,
@@ -85,7 +85,7 @@ public protocol NetworkClient: AnyObject {
     
 }
 
-public class DefaultNetworkClient: NetworkClient {
+public final class DefaultNetworkClient: NetworkClient {
     private let encoder: JSONEncoder
     private let decoder: JSONDecoder
     private let session: URLSession

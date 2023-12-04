@@ -4,7 +4,7 @@
 
 import Foundation
 import Tagged
-public class URLBuilder {
+public final class URLBuilder : Sendable {
     let base: URL
 
     init() {

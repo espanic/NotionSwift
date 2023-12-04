@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol NotionClientType: AnyObject {
+public protocol NotionClientType : Sendable {
 
     // MARK: - block
 
