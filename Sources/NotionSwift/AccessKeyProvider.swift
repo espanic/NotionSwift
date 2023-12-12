@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol AccessKeyProvider {
+public protocol AccessKeyProvider : Sendable {
     var accessKey: String? { get }
 }
 
