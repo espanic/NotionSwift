@@ -13,10 +13,10 @@ public final class URLBuilder : Sendable {
 
     public func url<T>(
         path: String,
-        identifier: Tagged<T, UUID>,
+        identifier: Tagged<T, String>,
         params: [String: String] = [:]
     ) -> URL {
-        let newPath = path.replacingOccurrences(of: "{identifier}", with: identifier.rawValue.uuidString)
+        let newPath = path.replacingOccurrences(of: "{identifier}", with: identifier.rawValue)
         guard let url = URL(string: newPath, relativeTo: base) else {
             fatalError("Invalid path, unable to create a URL: \(path)")
         }

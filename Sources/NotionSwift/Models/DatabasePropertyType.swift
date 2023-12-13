@@ -55,7 +55,7 @@ extension DatabasePropertyType {
 
         public init(
             name: String,
-            id: Identifier = .init(),
+            id: Identifier = "",
             color: String = "default"
         ) {
             self.name = name
