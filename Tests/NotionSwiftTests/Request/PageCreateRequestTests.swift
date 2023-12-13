@@ -10,8 +10,7 @@ import XCTest
 // swiftlint:disable line_length
 final class PageCreateRequestTests: XCTestCase {
     func test_propertiesEncoding_case01() throws {
-        let uuid = UUID(uuidString: "d2e05b4b-6d2f-4ef6-b1e6-2e2cf5a8e7c3")!
-        let parentId = Page.Identifier(uuid)
+        let parentId = Page.Identifier("d2e05b4b-6d2f-4ef6-b1e6-2e2cf5a8e7c3")
         let given = PageCreateRequest(
             parent: .page(parentId),
             properties: ["title": .init(type: .title([.init(string: "Lorem ipsum")]))],
@@ -24,8 +23,7 @@ final class PageCreateRequestTests: XCTestCase {
     }
 
     func test_propertiesAndChildrenEncoding_case01() throws {
-        let uuid = UUID(uuidString: "d2e05b4b-6d2f-4ef6-b1e6-2e2cf5a8e7c3")!
-        let parentId = Page.Identifier(uuid)
+        let parentId = Page.Identifier("d2e05b4b-6d2f-4ef6-b1e6-2e2cf5a8e7c3")
         let children: [WriteBlock] = [
             .paragraph(["Lorem ipsum dolor sit amet, "], color: .default)
         ]
@@ -41,8 +39,7 @@ final class PageCreateRequestTests: XCTestCase {
     }
 
     func test_childrenEncoding_case01() throws {
-        let uuid = UUID(uuidString: "d2e05b4b-6d2f-4ef6-b1e6-2e2cf5a8e7c3")!
-        let parentId = Page.Identifier(uuid)
+        let parentId = Page.Identifier("d2e05b4b-6d2f-4ef6-b1e6-2e2cf5a8e7c3")
         let children: [WriteBlock] = [
             .paragraph(["Lorem ipsum dolor sit amet, "])
         ]
@@ -59,8 +56,7 @@ final class PageCreateRequestTests: XCTestCase {
     }
     
     func test_childrenEncoding_case02() throws {
-        let uuid = UUID(uuidString: "d2e05b4b-6d2f-4ef6-b1e6-2e2cf5a8e7c3")!
-        let parentId = Page.Identifier(uuid)
+        let parentId = Page.Identifier("d2e05b4b-6d2f-4ef6-b1e6-2e2cf5a8e7c3")
         let children: [WriteBlock] = [
             .columnList(columns: [
                 .column([
