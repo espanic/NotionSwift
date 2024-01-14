@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct UpdateBlock {
+public struct UpdateBlock : Equatable {
     @available(*, deprecated, renamed: "type")
     public var value: BlockType {
         type

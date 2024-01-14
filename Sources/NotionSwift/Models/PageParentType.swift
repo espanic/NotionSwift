@@ -4,7 +4,7 @@
 
 import Foundation
 
-public enum PageParentType {
+public enum PageParentType : Equatable {
     case database(Database.Identifier)
     case page(Page.Identifier)
     case workspace

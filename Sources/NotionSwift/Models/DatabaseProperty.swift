@@ -5,7 +5,7 @@
 import Foundation
 import Tagged
 
-public struct DatabaseProperty {
+public struct DatabaseProperty : Equatable {
     public typealias Identifier = Tagged<DatabaseProperty, String>
     public let id: Identifier
     public let name: String

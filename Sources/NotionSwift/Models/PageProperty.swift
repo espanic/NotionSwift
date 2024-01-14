@@ -5,7 +5,7 @@
 import Foundation
 import Tagged
 
-public struct PageProperty {
+public struct PageProperty : Equatable {
     public typealias Identifier = Tagged<PageProperty, String>
     public let id: Identifier
     public let type: PagePropertyType
@@ -16,7 +16,7 @@ public struct PageProperty {
     }
 }
 
-public struct WritePageProperty {
+public struct WritePageProperty : Equatable {
     public let type: PagePropertyType
     
     public init(type: PagePropertyType) {
@@ -24,7 +24,7 @@ public struct WritePageProperty {
     }
 }
 
-public enum PagePropertyType {
+public enum PagePropertyType  : Equatable {
     case richText([RichText])
     case number(Decimal?)
     case select(SelectPropertyValue?)
@@ -49,7 +49,7 @@ public enum PagePropertyType {
 }
 
 extension PagePropertyType {
-    public struct SelectPropertyValue {
+    public struct SelectPropertyValue : Equatable {
         public let id: Tagged<SelectPropertyValue, String>?
         public let name: String?
         public let color: String?
@@ -65,7 +65,7 @@ extension PagePropertyType {
         }
     }
 
-    public struct MultiSelectPropertyValue {
+    public struct MultiSelectPropertyValue : Equatable {
         public let id: Tagged<MultiSelectPropertyValue, UUIDv4>?
         public let name: String?
         public let color: String?
@@ -81,8 +81,8 @@ extension PagePropertyType {
         }
     }
 
-    public struct FilesPropertyValue {
-        public enum FileLink {
+    public struct FilesPropertyValue : Equatable{
+        public enum FileLink : Equatable{
             case external(url: String)
             case file(url: String, expiryTime: Date)
             case unknown(typeName: String)
@@ -97,7 +97,7 @@ extension PagePropertyType {
         }
     }
 
-    public enum FormulaPropertyValue {
+    public enum FormulaPropertyValue : Equatable {
         case string(String?)
         case number(Decimal?)
         case boolean(Bool?)
@@ -105,14 +105,14 @@ extension PagePropertyType {
         case unknown
     }
 
-    public enum RollupPropertyValue {
+    public enum RollupPropertyValue : Equatable{
         case array([PagePropertyType])
         case number(Decimal?)
         case date(DateRange?)
         case unknown
     }
     
-    public struct StatusPropertyValue {
+    public struct StatusPropertyValue : Equatable {
         public let id: Tagged<StatusPropertyValue, UUIDv4>?
         public let name: String?
         public let color: String?
