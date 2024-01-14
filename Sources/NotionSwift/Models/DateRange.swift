@@ -2,7 +2,7 @@
 //  Created by Wojciech Chojnacki on 15/11/2021.
 //
 
-public struct DateRange : Equatable {
+public struct DateRange : Equatable, Hashable {
     public let start: DateValue
     public let end: DateValue?
 

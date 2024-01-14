@@ -5,7 +5,7 @@
 import Foundation
 import Tagged
 
-public enum DatabasePropertyType : Equatable {
+public enum DatabasePropertyType : Equatable, Hashable {
     case title
     case richText
     case number(NumberPropertyConfiguration)
@@ -30,7 +30,7 @@ public enum DatabasePropertyType : Equatable {
 }
 
 extension DatabasePropertyType {
-    public enum NumberPropertyConfiguration: String, Equatable {
+    public enum NumberPropertyConfiguration: String, Equatable, Hashable {
         case number
         case numberWithCommas = "number_with_commas"
         case percent
@@ -47,7 +47,7 @@ extension DatabasePropertyType {
 }
 
 extension DatabasePropertyType {
-    public struct SelectOption : Equatable {
+    public struct SelectOption : Equatable, Hashable {
         public typealias Identifier = Tagged<SelectOption, UUIDv4>
         public let name: String
         public let id: Identifier
@@ -66,7 +66,7 @@ extension DatabasePropertyType {
 }
 
 extension DatabasePropertyType {
-    public struct RelationPropertyConfiguration : Equatable {
+    public struct RelationPropertyConfiguration : Equatable, Hashable {
         public let databaseId: Database.Identifier
         public let syncedPropertyName: String?
         public let syncedPropertyId: DatabaseProperty.Identifier?
@@ -85,7 +85,7 @@ extension DatabasePropertyType {
 
 extension DatabasePropertyType {
 
-    public struct RollupPropertyConfiguration : Equatable {
+    public struct RollupPropertyConfiguration : Equatable, Hashable {
         public let relationPropertyName: String
         public let relationPropertyId: DatabaseProperty.Identifier
         public let rollupPropertyName: String
@@ -109,10 +109,10 @@ extension DatabasePropertyType {
 }
 
 extension DatabasePropertyType {
-    public struct StatusPropertConfirguration : Equatable  {
+    public struct StatusPropertConfirguration : Equatable, Hashable  {
         public typealias OptionIdentifier = Tagged<SelectOption, UUIDv4>
         
-        public struct StatusOption : Equatable {
+        public struct StatusOption : Equatable, Hashable {
             public let id: OptionIdentifier
             /// Name of the option as it appears in Notion.
             public let name: String
@@ -129,7 +129,7 @@ extension DatabasePropertyType {
             }
         }
         
-        public struct StatusGroup : Equatable {
+        public struct StatusGroup : Equatable, Hashable {
             public let id: OptionIdentifier
             public let name: String
             public let color: String
