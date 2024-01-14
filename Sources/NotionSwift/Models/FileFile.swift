@@ -4,7 +4,7 @@
 
 import Foundation
 
-public enum FileFile {
+public enum FileFile  : Equatable {
     case external(url: String)
     case file(url: String, expiryTime: Date)
     case unknown(typeName: String)

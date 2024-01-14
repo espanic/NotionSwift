@@ -5,7 +5,7 @@
 import Foundation
 import Tagged
 /// Just a placeholder entity. User ReadBlock / WriteBlock structs.
-public enum Block {
+public enum Block : Equatable {
     public typealias Identifier = Tagged<Block, UUIDv4>
 }
 

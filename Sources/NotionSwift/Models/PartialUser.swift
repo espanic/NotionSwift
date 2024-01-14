@@ -5,7 +5,7 @@
 import Foundation
 import Tagged
 
-public struct PartialUser {
+public struct PartialUser : Equatable {
     public let id: User.Identifier
     
     public init(id: User.Identifier) {
