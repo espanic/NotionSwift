@@ -4,7 +4,7 @@
 
 import Foundation
 
-public enum DatabaseParent  : Equatable,  Hashable {
+public enum DatabaseParent  : Equatable,  Hashable, Sendable {
     case pageId(Page.Identifier)
     case workspace
     case unknown(typeName: String)

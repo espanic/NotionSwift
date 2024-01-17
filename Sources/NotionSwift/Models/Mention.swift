@@ -4,8 +4,8 @@
 
 import Foundation
 
-public struct MentionTypeValue : Equatable {
-    public enum MentionType : Equatable {
+public struct MentionTypeValue : Equatable, Sendable {
+    public enum MentionType : Equatable, Sendable {
         case user(User)
         case page(PageMentionValue)
         case database(DatabaseMentionValue)
@@ -22,7 +22,7 @@ public struct MentionTypeValue : Equatable {
 
 extension MentionTypeValue {
 
-    public struct PageMentionValue : Equatable {
+    public struct PageMentionValue : Equatable, Sendable {
         public let id: Page.Identifier
 
         public init(_ id: Page.Identifier) {
@@ -30,7 +30,7 @@ extension MentionTypeValue {
         }
     }
 
-    public struct DatabaseMentionValue : Equatable {
+    public struct DatabaseMentionValue : Equatable, Sendable {
         public let id: Database.Identifier
 
         public init(_ id: Database.Identifier) {

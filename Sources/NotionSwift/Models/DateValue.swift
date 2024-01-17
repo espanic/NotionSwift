@@ -4,7 +4,7 @@
 
 import Foundation
 
-public enum DateValue : Equatable, Hashable {
+public enum DateValue : Equatable, Hashable, Sendable {
     case dateOnly(Date)
     case dateAndTime(Date)
 }

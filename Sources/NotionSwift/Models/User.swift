@@ -5,14 +5,14 @@
 import Foundation
 import Tagged
 
-public struct User : Equatable {
-    public enum UserType : Equatable {
+public struct User : Equatable, Sendable {
+    public enum UserType : Equatable, Sendable {
         case person(Person)
         case bot(Bot)
         case unknown
     }
 
-    public struct Person : Equatable {
+    public struct Person : Equatable, Sendable {
         public let email: String?
 
         public init(email: String?) {
@@ -20,7 +20,7 @@ public struct User : Equatable {
         }
     }
 
-    public struct Bot : Equatable{
+    public struct Bot : Equatable, Sendable{
         public init() {}
     }
 

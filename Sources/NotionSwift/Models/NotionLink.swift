@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct NotionLink : Equatable {
+public struct NotionLink : Equatable, Sendable {
     public let url: String?
 
     public init(url: String?) {

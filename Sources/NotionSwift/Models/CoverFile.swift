@@ -4,7 +4,7 @@
 
 import Foundation
 
-public enum CoverFile : Equatable{
+public enum CoverFile : Equatable, Sendable{
     case external(url: String)
     case unknown(typeName: String)
 }

@@ -5,7 +5,7 @@
 import Foundation
 import Tagged
 
-public struct PageProperty : Equatable {
+public struct PageProperty : Equatable, Sendable {
     public typealias Identifier = Tagged<PageProperty, String>
     public let id: Identifier
     public let type: PagePropertyType
@@ -24,7 +24,7 @@ public struct WritePageProperty : Equatable {
     }
 }
 
-public enum PagePropertyType  : Equatable {
+public enum PagePropertyType  : Equatable, Sendable {
     case richText([RichText])
     case number(Decimal?)
     case select(SelectPropertyValue?)
@@ -49,7 +49,7 @@ public enum PagePropertyType  : Equatable {
 }
 
 extension PagePropertyType {
-    public struct SelectPropertyValue : Equatable {
+    public struct SelectPropertyValue : Equatable, Sendable {
         public let id: Tagged<SelectPropertyValue, String>?
         public let name: String?
         public let color: String?
@@ -65,7 +65,7 @@ extension PagePropertyType {
         }
     }
 
-    public struct MultiSelectPropertyValue : Equatable {
+    public struct MultiSelectPropertyValue : Equatable, Sendable {
         public let id: Tagged<MultiSelectPropertyValue, UUIDv4>?
         public let name: String?
         public let color: String?
@@ -81,8 +81,8 @@ extension PagePropertyType {
         }
     }
 
-    public struct FilesPropertyValue : Equatable{
-        public enum FileLink : Equatable{
+    public struct FilesPropertyValue : Equatable, Sendable{
+        public enum FileLink : Equatable, Sendable{
             case external(url: String)
             case file(url: String, expiryTime: Date)
             case unknown(typeName: String)
@@ -97,7 +97,7 @@ extension PagePropertyType {
         }
     }
 
-    public enum FormulaPropertyValue : Equatable {
+    public enum FormulaPropertyValue : Equatable, Sendable {
         case string(String?)
         case number(Decimal?)
         case boolean(Bool?)
@@ -105,14 +105,14 @@ extension PagePropertyType {
         case unknown
     }
 
-    public enum RollupPropertyValue : Equatable{
+    public enum RollupPropertyValue : Equatable, Sendable{
         case array([PagePropertyType])
         case number(Decimal?)
         case date(DateRange?)
         case unknown
     }
     
-    public struct StatusPropertyValue : Equatable {
+    public struct StatusPropertyValue : Equatable, Sendable {
         public let id: Tagged<StatusPropertyValue, UUIDv4>?
         public let name: String?
         public let color: String?

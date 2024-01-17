@@ -4,7 +4,7 @@
 
 import Foundation
 
-public enum IconFile : Equatable {
+public enum IconFile : Equatable, Sendable {
     case external(url: String)
     case file(url: String, expiryTime: Date)
     case emoji(String)

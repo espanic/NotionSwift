@@ -6,7 +6,7 @@ import Foundation
 import Tagged
 
 /// The Page object contains **the property values** of a single Notion page.
-public struct Page : Equatable {
+public struct Page : Equatable, Sendable {
     public typealias Identifier = Tagged<Page, UUIDv4>
     public typealias PropertyName = String
     public let id: Identifier
